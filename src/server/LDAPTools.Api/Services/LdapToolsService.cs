@@ -23,7 +23,7 @@ public class LdapToolsService
 
     public List<LdapUser> GetAdUsers(int limit = 10)
     {
-        PrincipalContext context = new(ContextType.Domain);
+        PrincipalContext context = new(ContextType.Domain, _domain);
         UserPrincipal principal = new(context)
         {
             Enabled = true
@@ -36,7 +36,7 @@ public class LdapToolsService
 
     public List<LdapUser> GetAllAdUsers()
     {
-        PrincipalContext context = new PrincipalContext(ContextType.Domain);
+        PrincipalContext context = new PrincipalContext(ContextType.Domain, _domain);
         UserPrincipal principal = new UserPrincipal(context) { Enabled = true };
 
         PrincipalSearcher searcher = new PrincipalSearcher(principal);
@@ -49,7 +49,7 @@ public class LdapToolsService
 
     public List<LdapUser> FindAdUsers(string search, int limit = 10)
     {
-        PrincipalContext context = new(ContextType.Domain);
+        PrincipalContext context = new(ContextType.Domain, _domain);
 
         UserPrincipal principal = new(context)
         {

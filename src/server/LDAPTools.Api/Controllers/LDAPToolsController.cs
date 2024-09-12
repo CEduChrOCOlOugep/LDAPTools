@@ -41,5 +41,4 @@ public class LdapToolsController(LdapToolsService svc) : ControllerBase
         return Ok(svc.GetAdUserGroups(account));
     }
 
-
 }
