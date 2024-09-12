@@ -1,5 +1,5 @@
 using System.Runtime.Versioning;
-using LdapTools.Services;
+using LdapTools.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 
 [assembly: SupportedOSPlatform("windows")]

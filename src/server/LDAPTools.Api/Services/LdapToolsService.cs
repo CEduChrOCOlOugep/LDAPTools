@@ -1,11 +1,10 @@
 ﻿using System.DirectoryServices.AccountManagement;
 using System.Runtime.Versioning;
-using LdapTools.Models;
-using Microsoft.Extensions.Configuration;
+using LdapTools.Api.Models;
 
 [assembly: SupportedOSPlatform("windows")]
 
-namespace LdapTools.Services;
+namespace LdapTools.Api.Services;
 
 public class LdapToolsService
 {

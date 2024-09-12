@@ -3,7 +3,7 @@ using System.Runtime.Versioning;
 
 [assembly: SupportedOSPlatform("windows")]
 
-namespace LdapTools.Models;
+namespace LdapTools.Api.Models;
 
 public class LdapUser
 {
@@ -34,6 +34,8 @@ public class LdapUser
     public string UserPrincipalName { get; set; } = string.Empty;
     public bool? Enabled { get; set; }
 
-    public override string ToString() =>
-        $"{SamAccountName} - {Guid}";
+    public override string ToString()
+    {
+        return $"{SamAccountName} - {Guid}";
+    }
 }

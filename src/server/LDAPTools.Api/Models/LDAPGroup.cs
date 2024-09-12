@@ -1,6 +1,6 @@
 using System.DirectoryServices.AccountManagement;
 
-namespace LdapTools.Models;
+namespace LdapTools.Api.Models;
 
 public class LdapGroup
 {
@@ -29,6 +29,8 @@ public class LdapGroup
 
     public GroupScope? GroupScope { get; set; }
 
-    public override string ToString() =>
-        $"{GroupScope} - {Name} - {Guid}";
+    public override string ToString()
+    {
+        return $"{GroupScope} - {Name} - {Guid}";
+    }
 }
