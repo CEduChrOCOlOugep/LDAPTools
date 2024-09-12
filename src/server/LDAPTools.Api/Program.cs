@@ -1,6 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using DomainTools.Services;
+using LDAPTools.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +18,7 @@ builder
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<DomainToolsService>();
+builder.Services.AddScoped<LdapToolsService>();
 
 var app = builder.Build();
 
