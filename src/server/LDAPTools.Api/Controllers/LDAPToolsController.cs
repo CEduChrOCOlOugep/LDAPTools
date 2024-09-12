@@ -12,15 +12,15 @@ public class LdapToolsController(LdapToolsService svc) : ControllerBase
     private readonly LdapToolsService _svc = svc;
 
     [HttpGet("[action]")]
-    public IActionResult GetAdUsers([FromQuery] int limit = 10)
+    public IActionResult GetAdUsers([FromQuery] string? query = null, [FromQuery] int? start = null, [FromQuery] int? end = null)
     {
-        return Ok(_svc.GetAdUsers(limit));
+        return Ok(_svc.GetAdUsers(query, start, end));
     }
 
     [HttpGet("[action]/{search}")]
-    public IActionResult FindAdUsers([FromRoute] string search, [FromQuery] int limit = 10)
+    public IActionResult FindAdUsers([FromRoute] string search, [FromQuery] int? start = null, [FromQuery] int? end = null)
     {
-        return Ok(_svc.FindAdUsers(search, limit));
+        return Ok(_svc.FindAdUsers(search, start, end));
     }
 
     [HttpGet("[action]/{account}")]
