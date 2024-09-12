@@ -1,7 +1,7 @@
 ﻿using System.DirectoryServices.AccountManagement;
 using System.Runtime.Versioning;
 using LDAPTools.Models;
-using Microsoft.Extensions.Configuration;  
+using Microsoft.Extensions.Configuration;
 
 [assembly:SupportedOSPlatform("windows")]
 namespace LDAPTools.Services;
@@ -9,15 +9,24 @@ namespace LDAPTools.Services;
 public class LdapToolsService
 {
     private readonly string _domain;
+    private readonly string _serviceAccountUsername;
+    private readonly string _serviceAccountPassword;
 
     public LdapToolsService(IConfiguration configuration)
     {
         _domain = configuration["ActiveDirectory:Domain"] ?? throw new InvalidOperationException("Active Directory domain must be specified in the configuration.");
+        _serviceAccountUsername = configuration["ActiveDirectory:ServiceAccountUsername"];
+        _serviceAccountPassword = configuration["ActiveDirectory:ServiceAccountPassword"];
+    }
+
+    private PrincipalContext CreatePrincipalContext()
+    {
+        return new PrincipalContext(ContextType.Domain, _domain, _serviceAccountUsername, _serviceAccountPassword);
     }
 
     public List<LdapUser> GetAdUsers(int limit = 10)
     {
-        PrincipalContext context = new(ContextType.Domain, _domain);
+        using var context = CreatePrincipalContext();
         UserPrincipal principal = new(context)
         {
             Enabled = true
@@ -30,8 +39,7 @@ public class LdapToolsService
 
     public List<LdapUser> FindAdUsers(string search, int limit = 10)
     {
-        PrincipalContext context = new(ContextType.Domain, _domain);
-
+        using var context = CreatePrincipalContext();
         UserPrincipal principal = new(context)
         {
             Enabled = true,
@@ -43,22 +51,24 @@ public class LdapToolsService
             .ToList();
     }
 
-    public LdapUser FindAdUser(string account) =>
-        new(GetUserPrincipal(account));
+    public LdapUser FindAdUser(string account)
+    {
+        using var context = CreatePrincipalContext();
+        return new(GetUserPrincipal(context, account));
+    }
 
-    public List<LdapGroup> GetAdUserGroups(string account) =>
-        GetUserPrincipal(account)
+    public List<LdapGroup> GetAdUserGroups(string account)
+    {
+        using var context = CreatePrincipalContext();
+        return GetUserPrincipal(context, account)
             .GetGroups()
             .Cast<GroupPrincipal>()
             .Select(x => new LdapGroup(x))
             .ToList();
+    }
 
-    static UserPrincipal GetUserPrincipal(string account) =>
-        UserPrincipal.FindByIdentity(
-            new PrincipalContext(ContextType.Domain),
-            IdentityType.SamAccountName,
-            account
-        );
+    static UserPrincipal GetUserPrincipal(PrincipalContext context, string account) =>
+        UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, account);
 
     static IEnumerable<T> SearchPrincipals<T>(T principal, int limit = 10)
     where T : Principal =>
