@@ -1,11 +1,11 @@
 # Active Directory API
 
-* [**LDAPTools.Models**](./src/server/LDAPTools.Models/) - Defines the data models for optimizing AD data capture.
-* [**LDAPTools.Services**](./src/server/LDAPTools.Services/) - Defines the methods for retrieving AD data.
-* [**LDAPTools.Api**](./src/server/LDAPTools.Api/) - API that exposes public service methods as REST endpoints for retrieving AD data.
+* [**LdapTools.Models**](./src/server/LdapTools.Models/) - Defines the data models for optimizing AD data capture.
+* [**LdapTools.Services**](./src/server/LdapTools.Services/) - Defines the methods for retrieving AD data.
+* [**LdapTools.Api**](./src/server/LdapTools.Api/) - API that exposes public service methods as REST endpoints for retrieving AD data.
 
 ## Getting Started
 
-To run, change into the `src/server/LDAPTools.Api` directory and run `dotnet run`.
+To run, change into the `src/server/LdapTools.Api` directory and run `dotnet run`.
 
 Open `http://localhost:5000/swagger` to hit the swagger endpoint for the API.

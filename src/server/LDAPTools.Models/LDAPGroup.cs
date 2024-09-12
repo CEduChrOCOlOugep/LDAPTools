@@ -1,10 +1,12 @@
 using System.DirectoryServices.AccountManagement;
 
-namespace LDAPTools.Models;
+namespace LdapTools.Models;
 
 public class LdapGroup
 {
-    public LdapGroup() { }
+    public LdapGroup()
+    {
+    }
 
     public LdapGroup(GroupPrincipal principal)
     {
@@ -24,7 +26,7 @@ public class LdapGroup
     public string SamAccountName { get; set; } = string.Empty;
 
     public bool? IsSecurityGroup { get; set; }
-    
+
     public GroupScope? GroupScope { get; set; }
 
     public override string ToString() =>

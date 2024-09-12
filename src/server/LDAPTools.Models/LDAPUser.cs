@@ -1,11 +1,15 @@
 ﻿using System.DirectoryServices.AccountManagement;
 using System.Runtime.Versioning;
 
-[assembly:SupportedOSPlatform("windows")]
-namespace LDAPTools.Models;
+[assembly: SupportedOSPlatform("windows")]
+
+namespace LdapTools.Models;
+
 public class LdapUser
 {
-    public LdapUser() { }
+    public LdapUser()
+    {
+    }
 
     public LdapUser(UserPrincipal principal)
     {
@@ -17,7 +21,7 @@ public class LdapUser
         Name = principal.Name;
         SamAccountName = principal.SamAccountName;
         UserPrincipalName = principal.UserPrincipalName;
-        Enabled = principal.Enabled;        
+        Enabled = principal.Enabled;
     }
 
     public Guid? Guid { get; set; }
