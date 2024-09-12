@@ -1,6 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using LdapTools.Services;
+using LdapTools.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

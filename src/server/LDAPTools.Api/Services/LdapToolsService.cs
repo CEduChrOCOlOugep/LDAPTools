@@ -34,6 +34,19 @@ public class LdapToolsService
             .ToList();
     }
 
+    public List<LdapUser> GetAllAdUsers()
+    {
+        PrincipalContext context = new PrincipalContext(ContextType.Domain);
+        UserPrincipal principal = new UserPrincipal(context) { Enabled = true };
+
+        PrincipalSearcher searcher = new PrincipalSearcher(principal);
+        var results = searcher.FindAll();
+
+        return results.Cast<UserPrincipal>()
+                      .Select(x => new LdapUser(x))
+                      .ToList();
+    }
+
     public List<LdapUser> FindAdUsers(string search, int limit = 10)
     {
         PrincipalContext context = new(ContextType.Domain);
@@ -80,4 +93,6 @@ public class LdapToolsService
             .Take(limit)
             .Cast<T>();
     }
+
+
 }

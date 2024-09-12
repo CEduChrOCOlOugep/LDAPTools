@@ -17,6 +17,12 @@ public class LdapToolsController(LdapToolsService svc) : ControllerBase
         return Ok(svc.GetAdUsers(limit));
     }
 
+    [HttpGet("[action]")]
+    public IActionResult GetAllAdUsers()
+    {
+        return Ok(svc.GetAllAdUsers());
+    }
+
     [HttpGet("[action]/{search}")]
     public IActionResult FindAdUsers([FromRoute] string search, [FromQuery] int limit = 10)
     {
@@ -34,4 +40,6 @@ public class LdapToolsController(LdapToolsService svc) : ControllerBase
     {
         return Ok(svc.GetAdUserGroups(account));
     }
+
+
 }
