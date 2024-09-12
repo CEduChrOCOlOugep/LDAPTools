@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDAPTools.Models", "LDAPTools.Models\LDAPTools.Models.csproj", "{B1BB2224-FF06-4BD0-8A93-AA18E0D10DA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDAPTools.Services", "LDAPTools.Services\LDAPTools.Services.csproj", "{98B9C77A-A77B-483C-873E-8BD30B2994AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDAPTools.Api", "LDAPTools.Api\LDAPTools.Api.csproj", "{C8CC69AB-9511-4185-A997-A1D0B9D3529E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1BB2224-FF06-4BD0-8A93-AA18E0D10DA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1BB2224-FF06-4BD0-8A93-AA18E0D10DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1BB2224-FF06-4BD0-8A93-AA18E0D10DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1BB2224-FF06-4BD0-8A93-AA18E0D10DA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98B9C77A-A77B-483C-873E-8BD30B2994AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98B9C77A-A77B-483C-873E-8BD30B2994AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98B9C77A-A77B-483C-873E-8BD30B2994AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98B9C77A-A77B-483C-873E-8BD30B2994AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8CC69AB-9511-4185-A997-A1D0B9D3529E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8CC69AB-9511-4185-A997-A1D0B9D3529E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8CC69AB-9511-4185-A997-A1D0B9D3529E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8CC69AB-9511-4185-A997-A1D0B9D3529E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
